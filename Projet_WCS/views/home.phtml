@@ -1,0 +1,33 @@
+<h2>Ajouter un(e) Argonaute</h2>
+
+<?php if (isset($errors) && count($errors) > 0) : ?>
+    <ul>
+        <?php foreach ($errors as $error) : ?>
+            <li class="red"><?= $error; ?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+
+<!-- New member form -->
+<form class="new-member-form" method="post" action="index.php?route=addMember">
+    <label for="name">Nom de l&apos;Argonaute</label>
+    <input id="name" name="name" type="text" placeholder="Charalampos">
+    <button type="submit">Envoyer</button>
+</form>
+
+<!-- Member list -->
+<h2>Membres de l'équipage</h2>
+<section class="member-list">
+    <table>
+        <tr>
+            <?php foreach ($users as $user) : ?>
+                <?php if ($i > 0 && $i % $columns == 0) : ?>
+        </tr>
+        <tr>
+                <?php endif; ?>
+            <td class="member-item"><?= htmlspecialchars($user['name']) ?></td>
+                <?php $i++; ?>
+            <?php endforeach; ?>
+        </tr>
+    </table>
+</section>
